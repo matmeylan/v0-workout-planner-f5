@@ -60,11 +60,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "LUC II - Programme Préparation Physique Été 2025",
     description:
-      "Programme d'entraînement floorball pour l'équipe LUC II. Préparation physique été 2025 avec 3 sessions par semaine: endurance, seuil et renforcement.",
+      "Programme d'entraînement pour le LUC II. Préparation physique été 2025 avec 3 sessions par semaine: endurance, seuil et renforcement.",
     keywords: ["floorball", "LUC II", "préparation physique", "entraînement", "été 2025", "programme sportif"],
     openGraph: {
       title: "LUC II - Programme Préparation Physique",
-      description: "Programme d'entraînement floorball été 2025 - 3 sessions par semaine",
+      description: "Programme d'entraînement physique été 2025 - 3 sessions par semaine",
       type: "website",
       locale: "fr_FR",
       siteName: "LUC II Training App",
@@ -72,7 +72,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "LUC II - Programme Préparation Physique",
-      description: "Programme d'entraînement floorball été 2025",
+      description: "Programme d'entraînement physique été 2025",
     }
   }
 }
