@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Heart, Zap, Dumbbell, Clock, Repeat, Play, Pause } from "lucide-react"
-import type { Metadata } from "next
+import type { Metadata } from "next"
 
 const workoutData = {
   1: {
