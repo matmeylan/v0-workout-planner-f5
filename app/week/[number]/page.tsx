@@ -65,7 +65,7 @@ const workoutData = {
         exercises: [{ name: "Vélo ou footing zone 2", duration: "50 min", description: "Rythme confortable" }],
       },
       {
-        type: "Seuil",
+        type: "Seuil ou Match Amical",
         icon: Zap,
         color: "bg-orange-500",
         exercises: [

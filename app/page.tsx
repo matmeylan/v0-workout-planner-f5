@@ -38,7 +38,7 @@ export default function HomePage() {
                   <p className="text-gray-600 text-sm mb-3">{week.description}</p>
                   <div className="flex items-center text-xs text-blue-600">
                     <Zap className="h-3 w-3 mr-1" />
-                    <span>3 sessions par semaine</span>
+                    <span>3 sessions</span>
                   </div>
                 </CardContent>
               </Card>
