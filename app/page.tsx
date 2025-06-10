@@ -16,10 +16,9 @@ export default function HomePage() {
         <div className="text-center mb-8 pt-8">
           <div className="flex items-center justify-center mb-4">
             <Goal className="h-8 w-8 text-blue-600 mr-2" />
-            <h1 className="text-2xl font-bold text-gray-900">Floorball Team</h1>
+            <h1 className="text-2xl font-bold text-gray-900">LUC II - Programme préparation physique</h1>
           </div>
-          <h2 className="text-lg text-gray-600 mb-2">Programme Préparation Physique</h2>
-          <p className="text-sm text-gray-500">Été 2025</p>
+          <h2 className="text-lg text-gray-600 mb-2">Été 2025</h2>
         </div>
 
         <div className="space-y-4">
