@@ -1,6 +1,49 @@
 import { Heart, Zap, Dumbbell } from "lucide-react";
 
-export const workoutData = {
+export interface Week {
+  title: string;
+  description: string;
+  date: string;
+  sessions: Session[];
+}
+
+export interface Session {
+  type: string;
+  icon: any;
+  color: string;
+  exercises: AnyExercise[];
+}
+
+export type AnyExercise = Exercise | IntervalRunning | Tabata;
+
+export interface Exercise {
+  name: string;
+  duration: string;
+  description?: string;
+}
+
+export interface IntervalRunning extends Exercise {
+  type: "intervals";
+  intervals: {
+    hard: {
+      duration: string;
+      description: string;
+    };
+    easy: {
+      duration: string;
+      description: string;
+    };
+    rest?: string;
+  };
+}
+
+export interface Tabata extends Exercise {
+  type: "tabata";
+  details: string[];
+  rest: string;
+}
+
+export const workoutData: Record<number, Week> = {
   1: {
     title: "Semaine 1",
     description: "Base d'endurance et introduction",
@@ -29,6 +72,7 @@ export const workoutData = {
             description: "Footing léger",
           },
           {
+            type: "intervals",
             name: "Intervalles",
             duration: "6 répétitions",
             description: "Alternance course intense / course légère",
@@ -57,15 +101,16 @@ export const workoutData = {
             description: "ABC de course (comme en match)",
           },
           {
+            type: "tabata",
             name: "Circuit poids du corps",
             duration: "4 tours",
-            rest: "1min récup",
             details: [
               "10 squats jump",
               "10 fentes sautées (par jambe)",
               "30s mountain climbers",
               "45s planche dynamique",
             ],
+            rest: "1min récup",
           },
         ],
       },
@@ -197,6 +242,7 @@ export const workoutData = {
             description: "ABC de course",
           },
           {
+            type: "tabata",
             name: "Circuit explosivité",
             duration: "4 tours",
             rest: "1min30 récup",
@@ -207,6 +253,7 @@ export const workoutData = {
             ],
           },
           {
+            type: "tabata",
             name: "Gainage",
             duration: "3 tours",
             rest: "30s récup",

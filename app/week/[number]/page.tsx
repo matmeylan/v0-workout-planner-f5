@@ -1,16 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  Heart,
-  Zap,
-  Dumbbell,
-  Clock,
-  Repeat,
-  Play,
-  Pause,
-} from "lucide-react";
+import { ArrowLeft, Clock, Repeat, Play, Pause } from "lucide-react";
 import { SessionFeedback } from "@/components/session-feedback";
 import type { Metadata } from "next";
 import { workoutData } from "@/app/domain/workout";
@@ -79,7 +70,7 @@ export default async function WeekPage({
                       )}
 
                       {/* Special interval display for Seuil workouts */}
-                      {exercise.intervals && (
+                      {"type" in exercise && exercise.type === "intervals" && (
                         <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mt-3">
                           <div className="grid grid-cols-2 gap-3 mb-3">
                             <div className="bg-red-100 border border-red-300 rounded-lg p-3 text-center">
@@ -114,7 +105,7 @@ export default async function WeekPage({
                         </div>
                       )}
 
-                      {exercise.details && (
+                      {"details" in exercise && (
                         <ul className="text-sm text-gray-700 space-y-1">
                           {exercise.details.map((detail, detailIndex) => (
                             <li key={detailIndex} className="flex items-center">
@@ -125,7 +116,7 @@ export default async function WeekPage({
                         </ul>
                       )}
 
-                      {exercise.rest && !exercise.intervals && (
+                      {"rest" in exercise && !("intervals" in exercise) && (
                         <div className="flex items-center justify-center text-xs text-blue-600 bg-blue-50 rounded p-2 mt-2">
                           <Repeat className="h-3 w-3 mr-1" />
                           {exercise.rest}

@@ -1,7 +1,7 @@
-import { createClient, type Client } from "redis";
+import { createClient } from "redis";
 
 export class KeyValueDatabase implements Disposable {
-  #client?: Client;
+  #client?: any; // TODO: strong type
 
   async client() {
     if (!this.#client) {
