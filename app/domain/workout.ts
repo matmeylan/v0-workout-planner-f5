@@ -145,6 +145,7 @@ export const workoutData: Record<number, Week> = {
           },
           {
             name: "Intervalles",
+            type: "intervals",
             duration: "6 répétitions",
             description: "Alternance course intense / course légère",
             intervals: {
