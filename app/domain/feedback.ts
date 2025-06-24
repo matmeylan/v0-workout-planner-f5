@@ -14,7 +14,6 @@ export class FeedbackService {
           hard: 0,
           outOfReach: 0,
         };
-    console.log("got votes", { sessionId, sessionVotes });
     return sessionVotes;
   }
 
