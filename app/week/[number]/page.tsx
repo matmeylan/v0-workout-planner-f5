@@ -1,9 +1,18 @@
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Heart, Zap, Dumbbell, Clock, Repeat, Play, Pause } from "lucide-react"
-import { SessionFeedback } from "@/components/session-feedback"
-import type { Metadata } from "next"
+import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowLeft,
+  Heart,
+  Zap,
+  Dumbbell,
+  Clock,
+  Repeat,
+  Play,
+  Pause,
+} from "lucide-react";
+import { SessionFeedback } from "@/components/session-feedback";
+import type { Metadata } from "next";
 
 const workoutData = {
   1: {
@@ -14,7 +23,11 @@ const workoutData = {
         icon: Heart,
         color: "bg-green-500",
         exercises: [
-          { name: "Footing en zone 2", duration: "45 min", description: "Rythme confortable, conversation possible" },
+          {
+            name: "Footing en zone 2",
+            duration: "45 min",
+            description: "Rythme confortable, conversation possible",
+          },
         ],
       },
       {
@@ -22,14 +35,24 @@ const workoutData = {
         icon: Zap,
         color: "bg-orange-500",
         exercises: [
-          { name: "Échauffement", duration: "10 min", description: "Footing léger" },
+          {
+            name: "Échauffement",
+            duration: "10 min",
+            description: "Footing léger",
+          },
           {
             name: "Intervalles",
             duration: "6 répétitions",
             description: "Alternance course intense / course légère",
             intervals: {
-              hard: { duration: "30 sec", description: "Course intense (Zone 5 - à fond)" },
-              easy: { duration: "30 sec", description: "Course légère (récupération active)" },
+              hard: {
+                duration: "30 sec",
+                description: "Course intense (Zone 5 - à fond)",
+              },
+              easy: {
+                duration: "30 sec",
+                description: "Course légère (récupération active)",
+              },
               rest: "2 min récup après 3 blocs",
             },
           },
@@ -40,7 +63,11 @@ const workoutData = {
         icon: Dumbbell,
         color: "bg-purple-500",
         exercises: [
-          { name: "Échauffement", duration: "", description: "ABC de course (comme en match)" },
+          {
+            name: "Échauffement",
+            duration: "",
+            description: "ABC de course (comme en match)",
+          },
           {
             name: "Circuit poids du corps",
             duration: "4 tours",
@@ -63,21 +90,37 @@ const workoutData = {
         type: "Endurance",
         icon: Heart,
         color: "bg-green-500",
-        exercises: [{ name: "Vélo ou footing zone 2", duration: "50 min", description: "Rythme confortable" }],
+        exercises: [
+          {
+            name: "Vélo ou footing zone 2",
+            duration: "50 min",
+            description: "Rythme confortable",
+          },
+        ],
       },
       {
         type: "Seuil ou Match Amical",
         icon: Zap,
         color: "bg-orange-500",
         exercises: [
-          { name: "Échauffement", duration: "10 min", description: "Footing léger" },
+          {
+            name: "Échauffement",
+            duration: "10 min",
+            description: "Footing léger",
+          },
           {
             name: "Intervalles",
             duration: "6 répétitions",
             description: "Alternance course intense / course légère",
             intervals: {
-              hard: { duration: "45 sec", description: "Course intense (Zone 5 - à fond)" },
-              easy: { duration: "1min30", description: "Course légère (récupération active)" },
+              hard: {
+                duration: "45 sec",
+                description: "Course intense (Zone 5 - à fond)",
+              },
+              easy: {
+                duration: "1min30",
+                description: "Course légère (récupération active)",
+              },
             },
           },
         ],
@@ -87,25 +130,39 @@ const workoutData = {
         icon: Dumbbell,
         color: "bg-purple-500",
         exercises: [
-          { name: "Échauffement", duration: "10 min", description: "Footing léger" },
+          {
+            name: "Échauffement",
+            duration: "10 min",
+            description: "Footing léger",
+          },
           {
             name: "Circuit",
             duration: "4 tours",
             rest: "1min récup",
-            details: ["5 sprints 10 m", "10 fentes bulgares avec saut", "10 fentes sautées", "1min squat hold"],
+            details: [
+              "5 sprints 10 m",
+              "10 fentes bulgares avec saut",
+              "10 fentes sautées",
+              "1min squat hold",
+            ],
           },
         ],
       },
     ],
   },
-}
+};
 
-export default function WeekPage({ params }: { params: { number: string } }) {
-  const weekNumber = Number.parseInt(params.number)
-  const week = workoutData[weekNumber as keyof typeof workoutData]
+export default async function WeekPage({
+  params,
+}: {
+  params: Promise<{ number: string }>;
+}) {
+  const { number } = await params;
+  const weekNumber = Number.parseInt(number);
+  const week = workoutData[weekNumber as keyof typeof workoutData];
 
   if (!week) {
-    return <div>Semaine non trouvée</div>
+    return <div>Semaine non trouvée</div>;
   }
 
   return (
@@ -120,7 +177,7 @@ export default function WeekPage({ params }: { params: { number: string } }) {
 
         <div className="space-y-6">
           {week.sessions.map((session, index) => {
-            const IconComponent = session.icon
+            const IconComponent = session.icon;
             return (
               <Card key={index} className="border-2">
                 <CardHeader className="pb-3">
@@ -133,18 +190,30 @@ export default function WeekPage({ params }: { params: { number: string } }) {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {session.exercises.map((exercise, exerciseIndex) => (
-                    <div key={exerciseIndex} className="border-l-4 border-gray-200 pl-4">
+                    <div
+                      key={exerciseIndex}
+                      className="border-l-4 border-gray-200 pl-4"
+                    >
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold text-gray-900">{exercise.name}</h4>
+                        <h4 className="font-semibold text-gray-900">
+                          {exercise.name}
+                        </h4>
                         {exercise.duration && (
-                          <Badge variant="secondary" className="flex items-center">
+                          <Badge
+                            variant="secondary"
+                            className="flex items-center"
+                          >
                             <Clock className="h-3 w-3 mr-1" />
                             {exercise.duration}
                           </Badge>
                         )}
                       </div>
 
-                      {exercise.description && <p className="text-sm text-gray-600 mb-2">{exercise.description}</p>}
+                      {exercise.description && (
+                        <p className="text-sm text-gray-600 mb-2">
+                          {exercise.description}
+                        </p>
+                      )}
 
                       {/* Special interval display for Seuil workouts */}
                       {exercise.intervals && (
@@ -153,16 +222,24 @@ export default function WeekPage({ params }: { params: { number: string } }) {
                             <div className="bg-red-100 border border-red-300 rounded-lg p-3 text-center">
                               <div className="flex items-center justify-center mb-1">
                                 <Play className="h-4 w-4 text-red-600 mr-1" />
-                                <span className="font-semibold text-red-700">{exercise.intervals.hard.duration}</span>
+                                <span className="font-semibold text-red-700">
+                                  {exercise.intervals.hard.duration}
+                                </span>
                               </div>
-                              <p className="text-xs text-red-600">{exercise.intervals.hard.description}</p>
+                              <p className="text-xs text-red-600">
+                                {exercise.intervals.hard.description}
+                              </p>
                             </div>
                             <div className="bg-green-100 border border-green-300 rounded-lg p-3 text-center">
                               <div className="flex items-center justify-center mb-1">
                                 <Pause className="h-4 w-4 text-green-600 mr-1" />
-                                <span className="font-semibold text-green-700">{exercise.intervals.easy.duration}</span>
+                                <span className="font-semibold text-green-700">
+                                  {exercise.intervals.easy.duration}
+                                </span>
                               </div>
-                              <p className="text-xs text-green-600">{exercise.intervals.easy.description}</p>
+                              <p className="text-xs text-green-600">
+                                {exercise.intervals.easy.description}
+                              </p>
                             </div>
                           </div>
                           {exercise.intervals.rest && (
@@ -194,9 +271,11 @@ export default function WeekPage({ params }: { params: { number: string } }) {
                     </div>
                   ))}
                 </CardContent>
-                <SessionFeedback sessionId={`week-${weekNumber}-session-${index}`} />
+                <SessionFeedback
+                  sessionId={`week-${weekNumber}-session-${index}`}
+                />
               </Card>
-            )
+            );
           })}
         </div>
 
@@ -207,27 +286,38 @@ export default function WeekPage({ params }: { params: { number: string } }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-
-export async function generateMetadata({ params }: { params: { number: string } }): Promise<Metadata> {
-  const weekNumber = Number.parseInt(params.number)
-  const week = workoutData[weekNumber as keyof typeof workoutData]
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ number: string }>;
+}): Promise<Metadata> {
+  const { number } = await params;
+  const weekNumber = Number.parseInt(number);
+  const week = workoutData[weekNumber as keyof typeof workoutData];
 
   if (!week) {
     return {
       title: "Semaine non trouvée - LUC II",
-      description: "Cette semaine d'entraînement n'existe pas dans le programme.",
-    }
+      description:
+        "Cette semaine d'entraînement n'existe pas dans le programme.",
+    };
   }
 
-  const sessionTypes = week.sessions.map((s) => s.type).join(", ")
+  const sessionTypes = week.sessions.map((s) => s.type).join(", ");
 
   return {
     title: `${week.title} - LUC II Programme Physique`,
     description: `Entraînements de la ${week.title.toLowerCase()}: ${sessionTypes}. Programme de préparation physique été 2025 pour le LUC II.`,
-    keywords: ["floorball", "préparation physique", `semaine ${weekNumber}`, "entraînement", "LUC II"],
+    keywords: [
+      "floorball",
+      "préparation physique",
+      `semaine ${weekNumber}`,
+      "entraînement",
+      "LUC II",
+    ],
     openGraph: {
       title: `${week.title} - LUC II Programme Physique`,
       description: `Entraînements: ${sessionTypes}`,
@@ -240,5 +330,5 @@ export async function generateMetadata({ params }: { params: { number: string } 
       title: `${week.title} - LUC II Programme Physique`,
       description: `Entraînements: ${sessionTypes}`,
     },
-  }
+  };
 }
