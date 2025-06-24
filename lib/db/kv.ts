@@ -1,12 +1,11 @@
 import { createClient } from "redis";
 
 export class KeyValueDatabase implements Disposable {
-  #client?: any; // TODO: strong type
+  readonly #client = createClient({ url: process.env.REDIS_URL });
 
   async client() {
-    if (!this.#client) {
-      this.#client = createClient({ url: process.env.REDIS_URL });
-      await this.#client?.connect();
+    if (!this.#client.isReady) {
+      await this.#client.connect();
     }
     return this.#client;
   }
