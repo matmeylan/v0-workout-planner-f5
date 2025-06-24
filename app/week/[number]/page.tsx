@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Heart, Zap, Dumbbell, Clock, Repeat, Play, Pause } from "lucide-react"
+import { SessionFeedback } from "@/components/session-feedback"
 import type { Metadata } from "next"
 
 const workoutData = {
@@ -193,6 +194,7 @@ export default function WeekPage({ params }: { params: { number: string } }) {
                     </div>
                   ))}
                 </CardContent>
+                <SessionFeedback sessionId={`week-${weekNumber}-session-${index}`} />
               </Card>
             )
           })}
