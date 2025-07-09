@@ -3,7 +3,8 @@ import {Heart, Zap, Dumbbell} from "lucide-react";
 export interface Week {
   title: string;
   description: string;
-  date: string;
+  startDate: Date;
+  endDate: Date;
   sessions: Session[];
 }
 
@@ -47,7 +48,8 @@ export const workoutData: Record<number, Week> = {
   1: {
     title: "Semaine 1",
     description: "Base d'endurance et introduction",
-    date: "11 - 17 juin",
+    startDate: new Date(2025, 5, 11), // June 11, 2025
+    endDate: new Date(2025, 5, 17), // June 17, 2025
     sessions: [
       {
         type: "Endurance",
@@ -119,7 +121,8 @@ export const workoutData: Record<number, Week> = {
   2: {
     title: "Semaine 2",
     description: "Progression et intensité",
-    date: "18 - 24 juin",
+    startDate: new Date(2025, 5, 18), // June 18, 2025
+    endDate: new Date(2025, 5, 24), // June 24, 2025
     sessions: [
       {
         type: "Endurance",
@@ -189,7 +192,8 @@ export const workoutData: Record<number, Week> = {
   3: {
     title: "Semaine 3",
     description: "Montée en charge",
-    date: "25 juin - 1er juillet",
+    startDate: new Date(2025, 5, 25), // June 25, 2025
+    endDate: new Date(2025, 6, 1), // July 1, 2025
     sessions: [
       {
         type: "Endurance",
@@ -271,7 +275,8 @@ export const workoutData: Record<number, Week> = {
   4: {
     title: "Semaine 4",
     description: "Pyramide",
-    date: "2 - 8 juillet",
+    startDate: new Date(2025, 6, 2), // July 2, 2025
+    endDate: new Date(2025, 6, 8), // July 8, 2025
     sessions: [
       {
         type: "Endurance",
@@ -348,7 +353,8 @@ export const workoutData: Record<number, Week> = {
   5: {
     title: 'Semaine 5',
     description: 'Récupération active',
-    date: '9 - 15 juillet',
+    startDate: new Date(2025, 6, 9), // July 9, 2025
+    endDate: new Date(2025, 6, 15), // July 15, 2025
     sessions: [
       {
         type: 'Endurance',
@@ -401,7 +407,8 @@ export const workoutData: Record<number, Week> = {
   6: {
     title: 'Semaine 6',
     description: 'Montée en intensité',
-    date: '16 - 22 juillet',
+    startDate: new Date(2025, 6, 16), // July 16, 2025
+    endDate: new Date(2025, 6, 22), // July 22, 2025
     sessions: [
       {
         type: 'Endurance',
