@@ -10,7 +10,7 @@ export interface Week {
 
 export interface Session {
   type: string;
-  icon: unknown;
+  icon: any; // eslint-disable-line
   color: string;
   exercises: AnyExercise[];
 }
