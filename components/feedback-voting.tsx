@@ -1,47 +1,25 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ThumbsDown, ThumbsUp, AlertTriangle, BarChart3 } from "lucide-react";
+import {useEffect, useState} from "react";
+import {Button} from "@/components/ui/button";
+import {Card, CardContent} from "@/components/ui/card";
+import {AlertTriangle, BarChart3, ThumbsDown, ThumbsUp} from "lucide-react";
+import {FeedbackData} from "@/app/domain/feedback";
 
-interface FeedbackData {
-  percentages: {
-    tooEasy: number;
-    hard: number;
-    outOfReach: number;
-  };
-  totalVotes: number;
-}
-
-interface SessionFeedbackProps {
+interface FeedbackVotingProps {
   sessionId: string;
+  initialFeedback: FeedbackData;
 }
 
-export function SessionFeedback({ sessionId }: SessionFeedbackProps) {
-  const [feedback, setFeedback] = useState<FeedbackData | null>(null);
+export function FeedbackVoting({ sessionId, initialFeedback }: FeedbackVotingProps) {
+  const [feedback, setFeedback] = useState(initialFeedback);
   const [hasVoted, setHasVoted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    loadFeedback();
-    checkIfVoted();
-  }, [sessionId]);
-
-  const checkIfVoted = () => {
     const voted = localStorage.getItem(`voted_${sessionId}`);
     setHasVoted(!!voted);
-  };
-
-  const loadFeedback = async () => {
-    try {
-      const response = await fetch(`/api/feedback?sessionId=${sessionId}`);
-      const data = await response.json();
-      setFeedback(data);
-    } catch (error) {
-      console.error("Failed to load feedback:", error);
-    }
-  };
+  }, [sessionId]);
 
   const submitVote = async (vote: "tooEasy" | "hard" | "outOfReach") => {
     if (hasVoted || isLoading) return;
@@ -57,7 +35,9 @@ export function SessionFeedback({ sessionId }: SessionFeedbackProps) {
       if (response.ok) {
         localStorage.setItem(`voted_${sessionId}`, vote);
         setHasVoted(true);
-        await loadFeedback();
+
+        const body = await response.json()
+        setFeedback(body.feedback)
       }
     } catch (error) {
       console.error("Failed to submit vote:", error);
@@ -115,7 +95,7 @@ export function SessionFeedback({ sessionId }: SessionFeedbackProps) {
           </div>
         )}
 
-        {feedback && feedback.totalVotes > 0 && (
+        {feedback.totalVotes > 0 && (
           <div className="space-y-2">
             <div className="text-xs text-gray-500 mb-2">
               Résultats ({feedback.totalVotes} vote

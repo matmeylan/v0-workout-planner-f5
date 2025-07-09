@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Clock, Repeat, Play, Pause } from "lucide-react";
-import { SessionFeedback } from "@/components/session-feedback";
-import type { Metadata } from "next";
-import { workoutData } from "@/app/domain/workout";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {Badge} from "@/components/ui/badge";
+import {ArrowLeft, Clock, Pause, Play, Repeat} from "lucide-react";
+import {FeedbackVoting} from "@/components/feedback-voting";
+import type {Metadata} from "next";
+import {workoutData} from "@/app/domain/workout";
+import {FeedbackService} from "@/app/domain/feedback";
 
 export default async function WeekPage({
   params,
@@ -18,6 +19,14 @@ export default async function WeekPage({
   if (!week) {
     return <div>Semaine non trouvée</div>;
   }
+
+  const feedbackService = new FeedbackService()
+
+  // Fetch feedback data for all sessions in parallel
+  const feedbackDataPromises = week.sessions.map((_, index) => 
+    feedbackService.getFeedbackData(FeedbackService.sessionId(weekNumber, index))
+  );
+  const feedbackData = await Promise.all(feedbackDataPromises);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
@@ -125,8 +134,9 @@ export default async function WeekPage({
                     </div>
                   ))}
                 </CardContent>
-                <SessionFeedback
-                  sessionId={`week-${weekNumber}-session-${index}`}
+                <FeedbackVoting
+                  sessionId={FeedbackService.sessionId(weekNumber, index)}
+                  initialFeedback={feedbackData[index]}
                 />
               </Card>
             );

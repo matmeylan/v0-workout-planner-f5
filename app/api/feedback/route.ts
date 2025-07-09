@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     sessionVotes[vote as keyof typeof sessionVotes]++;
     await feedbackService.setSessionFeedback(sessionId, sessionVotes);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, feedback: await feedbackService.getFeedbackData(sessionId) });
   } catch (error) {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
