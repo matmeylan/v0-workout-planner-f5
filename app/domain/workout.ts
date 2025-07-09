@@ -352,7 +352,7 @@ export const workoutData: Record<number, Week> = {
     sessions: [
       {
         type: 'Endurance',
-        icon: 'Heart',
+        icon: Heart,
         color: 'bg-green-500',
         exercises: [
           {
@@ -364,7 +364,7 @@ export const workoutData: Record<number, Week> = {
       },
       {
         type: 'Endurance',
-        icon: 'Zap',
+        icon: Zap,
         color: 'bg-orange-500',
         exercises: [
           {
@@ -376,7 +376,7 @@ export const workoutData: Record<number, Week> = {
       },
       {
         type: 'Renforcement',
-        icon: 'Dumbbell',
+        icon: Dumbbell,
         color: 'bg-purple-500',
         exercises: [
           {
@@ -405,7 +405,7 @@ export const workoutData: Record<number, Week> = {
     sessions: [
       {
         type: 'Endurance',
-        icon: 'Heart',
+        icon: Heart,
         color: 'bg-green-500',
         exercises: [
           {
@@ -417,7 +417,7 @@ export const workoutData: Record<number, Week> = {
       },
       {
         type: 'Seuil',
-        icon: 'Zap',
+        icon: Zap,
         color: 'bg-orange-500',
         exercises: [
           {
@@ -451,7 +451,7 @@ export const workoutData: Record<number, Week> = {
       },
       {
         type: 'Renforcement',
-        icon: 'Dumbbell',
+        icon: Dumbbell,
         color: 'bg-purple-500',
         exercises: [
           {
