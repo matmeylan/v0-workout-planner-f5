@@ -5,7 +5,7 @@ import Link from "next/link";
 import { workoutData } from "@/app/domain/workout";
 
 export default function HomePage() {
-  const weeks = Object.entries(workoutData);
+  const weeks = Object.entries(workoutData).reverse();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
