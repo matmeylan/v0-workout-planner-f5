@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {Calendar, Goal, Zap, Disc2, Circle, Disc3} from "lucide-react";
-import type { Metadata } from "next";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {Calendar, Disc3, Goal, Zap} from "lucide-react";
+import type {Metadata} from "next";
 import Link from "next/link";
-import { workoutData } from "@/app/domain/workout";
-import { isCurrentWeek } from "@/lib/current-week";
+import {workoutData} from "@/app/domain/workout";
+import {isCurrentWeek} from "@/lib/current-week";
 
 export default function HomePage() {
   const weeks = Object.entries(workoutData).reverse();

@@ -1,5 +1,5 @@
-import { FeedbackService } from "@/app/domain/feedback";
-import { NextRequest, NextResponse } from "next/server";
+import {FeedbackService} from "@/app/domain/feedback";
+import {NextRequest, NextResponse} from "next/server";
 
 const feedbackService = new FeedbackService();
 
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     await feedbackService.setSessionFeedback(sessionId, sessionVotes);
 
     return NextResponse.json({ success: true, feedback: await feedbackService.getFeedbackData(sessionId) });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
     };
 
     return NextResponse.json({ percentages, totalVotes: total });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

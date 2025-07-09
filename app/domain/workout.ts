@@ -1,4 +1,4 @@
-import {Heart, Zap, Dumbbell} from "lucide-react";
+import {Dumbbell, Heart, Zap} from "lucide-react";
 
 export interface Week {
   title: string;
@@ -10,7 +10,7 @@ export interface Week {
 
 export interface Session {
   type: string;
-  icon: any;
+  icon: unknown;
   color: string;
   exercises: AnyExercise[];
 }

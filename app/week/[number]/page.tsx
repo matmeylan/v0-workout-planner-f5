@@ -145,7 +145,7 @@ export default async function WeekPage({
 
         <div className="mt-8 p-4 bg-white/50 rounded-lg">
           <p className="text-xs text-gray-500 text-center">
-            💡 Adapte la charge vers le haut si tu n'es pas assez fatigué.
+            💡 Adapte la charge vers le haut si tu n&apos;es pas assez fatigué.
           </p>
         </div>
       </div>
