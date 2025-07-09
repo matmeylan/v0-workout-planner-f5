@@ -1,4 +1,4 @@
-import { Heart, Zap, Dumbbell } from "lucide-react";
+import {Heart, Zap, Dumbbell} from "lucide-react";
 
 export interface Week {
   title: string;
@@ -339,6 +339,148 @@ export const workoutData: Record<number, Week> = {
               "10 sauts pieds joints latéraux",
               "30s step-up sautés (par jambe)",
               "30s burpees",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  5: {
+    title: 'Semaine 5',
+    description: 'Récupération active',
+    date: '9 - 15 juillet',
+    sessions: [
+      {
+        type: 'Endurance',
+        icon: 'Heart',
+        color: 'bg-green-500',
+        exercises: [
+          {
+            name: 'Easy run (Zone 1-2)',
+            duration: '45 min',
+            description: 'Course à très faible intensité, rythme très facile',
+          },
+        ],
+      },
+      {
+        type: 'Endurance',
+        icon: 'Zap',
+        color: 'bg-orange-500',
+        exercises: [
+          {
+            name: 'Footing tempo (Zone 3)',
+            duration: '35 min',
+            description: 'Course continue à intensité modérée, maintien d’un bon rythme',
+          },
+        ],
+      },
+      {
+        type: 'Renforcement',
+        icon: 'Dumbbell',
+        color: 'bg-purple-500',
+        exercises: [
+          {
+            name: 'Circuit renfo gainage & jambes',
+            duration: '3 tours',
+            description: 'Travail contrôlé, sans explosivité',
+            type: 'tabata',
+            rest: '1min récup',
+            details: [
+              '45s chaise contre un mur',
+              '45s gainage ventral',
+              '30s squats lents',
+              '45s gainage latéral (droite)',
+              '45s gainage latéral (gauche)',
+              '30s pont fessier au sol',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  6: {
+    title: 'Semaine 6',
+    description: 'Montée en intensité',
+    date: '16 - 22 juillet',
+    sessions: [
+      {
+        type: 'Endurance',
+        icon: 'Heart',
+        color: 'bg-green-500',
+        exercises: [
+          {
+            name: 'Footing vallonné (Zone 2)',
+            duration: '60 min',
+            description: 'Sortie longue avec un peu de dénivelé, rythme conversationnel',
+          },
+        ],
+      },
+      {
+        type: 'Seuil',
+        icon: 'Zap',
+        color: 'bg-orange-500',
+        exercises: [
+          {
+            name: 'Échauffement',
+            duration: '12 min',
+            description: 'Footing + mobilisation articulaire',
+          },
+          {
+            type: 'intervals',
+            name: 'Intervalles 60/120',
+            duration: '6 répétitions',
+            description: 'Effort long, récupération active',
+            intervals: {
+              hard: {
+                duration: '60 sec',
+                description: 'Course en zone 4-5, maintien d’un tempo intense',
+              },
+              easy: {
+                duration: '120 sec',
+                description: 'Marche ou footing très léger',
+              },
+              rest: '2 min entre les blocs de 3 répétitions',
+            },
+          },
+          {
+            name: 'Retour au calme',
+            duration: '5 min',
+            description: 'Marche + respiration contrôlée',
+          },
+        ],
+      },
+      {
+        type: 'Renforcement',
+        icon: 'Dumbbell',
+        color: 'bg-purple-500',
+        exercises: [
+          {
+            name: 'Échauffement actif',
+            duration: '10 min',
+            description: 'Sauts sur place, mobilisations, fentes dynamiques',
+          },
+          {
+            type: 'tabata',
+            name: 'Circuit explosivité',
+            duration: '4 tours',
+            rest: '1min30 récup',
+            details: [
+              '20s squats sautés',
+              '30s fentes sautées (alternées)',
+              '30s burpees',
+              '30s squats bulgares sautés',
+            ],
+          },
+          {
+            type: 'tabata',
+            name: 'Gainage dynamique',
+            duration: '3 tours',
+            rest: '1m récup',
+            details: [
+              '30s gainage planche dynamique',
+              '30s mountain climbers',
+              '30s superman',
+              '30s pont fessier au sol',
             ],
           },
         ],
