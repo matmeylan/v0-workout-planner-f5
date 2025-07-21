@@ -2,14 +2,15 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Calendar, Disc3, Goal, Zap} from "lucide-react";
 import type {Metadata} from "next";
 import Link from "next/link";
-import {workoutData} from "@/app/domain/workout";
+import {Week, workoutData} from "@/app/domain/workout";
 import {isCurrentWeek} from "@/lib/current-week";
+import {connection} from "next/server";
 
-export const dynamic = 'force-dynamic';
-
-export default function HomePage() {
+export  default async function HomePage() {
   const weeks = Object.entries(workoutData).reverse();
   const intl = new Intl.DateTimeFormat("fr", {day: '2-digit', month: 'short'});
+  await connection() // everything below will be excluded from pre rendering, because we depend on new Date()
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-md mx-auto">
@@ -29,8 +30,8 @@ export default function HomePage() {
             return (
               <Link key={number} href={`/week/${number}`}>
                 <Card className={`hover:shadow-lg transition-shadow cursor-pointer border-2 ${
-                  isCurrent 
-                    ? 'border-green-400 bg-green-50 hover:border-green-500' 
+                  isCurrent
+                    ? 'border-green-400 bg-green-50 hover:border-green-500'
                     : 'hover:border-blue-200'
                 }`}>
                   <CardHeader className="pb-3">
