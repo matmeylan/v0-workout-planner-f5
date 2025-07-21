@@ -5,6 +5,8 @@ import Link from "next/link";
 import {workoutData} from "@/app/domain/workout";
 import {isCurrentWeek} from "@/lib/current-week";
 
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
   const weeks = Object.entries(workoutData).reverse();
   const intl = new Intl.DateTimeFormat("fr", {day: '2-digit', month: 'short'});
