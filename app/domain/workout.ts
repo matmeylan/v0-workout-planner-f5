@@ -529,7 +529,7 @@ export const workoutData: Record<number, Week> = {
             },
             {
               type: 'intervals',
-              name: 'Intervalles 2/3',
+              name: 'Intervales 2/3',
               duration: '6 répétitions',
               description: 'Effort long, récupération active',
               intervals: {
@@ -590,12 +590,12 @@ export const workoutData: Record<number, Week> = {
         exercises: [
           {
             name: 'Échauffement progressif',
-            duration: '12 min',
+            duration: '10 min',
             description: 'Footing + mobilisation articulaire',
           },
           {
             type: 'intervals',
-            name: 'Intervalles 30/30',
+            name: 'Intervales 3/2',
             duration: '6 à 8 répétitions',
             description: 'Effort intense court, récupération équivalente',
             intervals: {
