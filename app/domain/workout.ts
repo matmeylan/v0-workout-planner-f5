@@ -1,4 +1,4 @@
-import {Dumbbell, Heart, Zap} from "lucide-react";
+import {Dumbbell, Heart, Zap, Video} from "lucide-react";
 
 export interface Week {
   title: string;
@@ -15,7 +15,7 @@ export interface Session {
   exercises: AnyExercise[];
 }
 
-export type AnyExercise = Exercise | IntervalRunning | Tabata;
+export type AnyExercise = Exercise | IntervalRunning | Tabata | YouTubeVideo;
 
 export interface Exercise {
   name: string;
@@ -42,6 +42,11 @@ export interface Tabata extends Exercise {
   type: "tabata";
   details: string[];
   rest: string;
+}
+
+export interface YouTubeVideo extends Exercise {
+  type: "youtube";
+  videoUrl: string;
 }
 
 export const workoutData: Record<number, Week> = {

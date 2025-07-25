@@ -2,7 +2,7 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Calendar, Disc3, Goal, Zap} from "lucide-react";
 import type {Metadata} from "next";
 import Link from "next/link";
-import {Week, workoutData} from "@/app/domain/workout";
+import {workoutData} from "@/app/domain/workout";
 import {isCurrentWeek} from "@/lib/current-week";
 import {connection} from "next/server";
 

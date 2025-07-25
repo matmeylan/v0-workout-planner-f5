@@ -7,6 +7,11 @@ import type {Metadata} from "next";
 import {workoutData} from "@/app/domain/workout";
 import {FeedbackService} from "@/app/domain/feedback";
 
+function getYouTubeEmbedUrl(url: string): string {
+  const videoIdMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
+  return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : url;
+}
+
 export default async function WeekPage({
   params,
 }: {
@@ -111,6 +116,21 @@ export default async function WeekPage({
                               {exercise.intervals.rest}
                             </div>
                           )}
+                        </div>
+                      )}
+
+                      {/* YouTube video display */}
+                      {"type" in exercise && exercise.type === "youtube" && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mt-3">
+                          <div className="aspect-video w-full rounded-lg overflow-hidden">
+                            <iframe
+                              src={getYouTubeEmbedUrl(exercise.videoUrl)}
+                              title={exercise.name}
+                              className="w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          </div>
                         </div>
                       )}
 
