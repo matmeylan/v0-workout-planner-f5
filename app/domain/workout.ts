@@ -499,4 +499,160 @@ export const workoutData: Record<number, Week> = {
       },
     ],
   },
+  7: {
+      title: 'Semaine 7',
+      description: 'Persistence et continuité',
+      startDate: new Date(2025, 6, 23),
+      endDate: new Date(2025, 6, 29),
+      sessions: [
+        {
+          type: 'Endurance',
+          icon: Heart,
+          color: 'bg-green-500',
+          exercises: [
+            {
+              name: 'Footing vallonné (Zone 2)',
+              duration: '60 min',
+              description: 'Sortie longue avec un peu de dénivelé, rythme conversationnel',
+            },
+          ],
+        },
+        {
+          type: 'Seuil',
+          icon: Zap,
+          color: 'bg-orange-500',
+          exercises: [
+            {
+              name: 'Échauffement',
+              duration: '10 min',
+              description: 'Footing',
+            },
+            {
+              type: 'intervals',
+              name: 'Intervalles 2/3',
+              duration: '6 répétitions',
+              description: 'Effort long, récupération active',
+              intervals: {
+                hard: {
+                  duration: '2 min',
+                  description: 'Course en zone 4-5, maintien d’un tempo intense',
+                },
+                easy: {
+                  duration: '3 min',
+                  description: 'Marche ou footing léger',
+                },
+              },
+            },
+            {
+              name: 'Retour au calme',
+              duration: '10 min',
+              description: 'Marche + respiration contrôlée',
+            },
+          ],
+        },
+        {
+          type: "Renforcement",
+          icon: Video,
+          color: "bg-red-500",
+          exercises: [
+            {
+              type: "youtube",
+              name: "Séance renforcement membres inf.",
+              duration: "25 min",
+              videoUrl: "https://www.youtube.com/watch?v=B36I0vT-OnE",
+            },
+          ],
+        },
+      ],
+    },
+  8: {
+    title: 'Semaine 8',
+    description: 'Consolidation du travail aérobie et explosif',
+    startDate: new Date(2025, 6, 30),
+    endDate: new Date(2025, 7, 5),
+    sessions: [
+      {
+        type: 'Endurance',
+        icon: Heart,
+        color: 'bg-green-500',
+        exercises: [
+          {
+            name: 'Footing récupération (Zone 1)',
+            duration: '50 min',
+            description: 'Course très facile pour favoriser la récupération active',
+          },
+        ],
+      },
+      {
+        type: 'Seuil',
+        icon: Zap,
+        color: 'bg-orange-500',
+        exercises: [
+          {
+            name: 'Échauffement progressif',
+            duration: '12 min',
+            description: 'Footing + mobilisation articulaire',
+          },
+          {
+            type: 'intervals',
+            name: 'Intervalles 30/30',
+            duration: '6 à 8 répétitions',
+            description: 'Effort intense court, récupération équivalente',
+            intervals: {
+              hard: {
+                duration: '3 min',
+                description: 'Course rapide (zone 4-5), sans sprint',
+              },
+              easy: {
+                duration: '2 min',
+                description: 'Course lente ou footing léger',
+              },
+              rest: '2 min de récup à la moitié',
+            },
+          },
+          {
+            name: 'Retour au calme',
+            duration: '5 min',
+            description: 'Marche + étirements légers',
+          },
+        ],
+      },
+      {
+        type: 'Renforcement',
+        icon: Dumbbell,
+        color: 'bg-purple-500',
+        exercises: [
+          {
+            name: 'Échauffement mobilité + activation',
+            duration: '10 min',
+            description: 'Mobilisation des hanches, squats dynamiques, jumping jacks',
+          },
+          {
+            type: 'tabata',
+            name: 'Circuit explosivité jambes',
+            duration: '3 tours',
+            rest: '1min30 récup',
+            details: [
+              '30s box jumps ou squats sautés',
+              '30s fentes sautées avec rotation',
+              '30s burpees',
+              '30s planche + genoux poitrine rapide',
+            ],
+          },
+          {
+            type: 'tabata',
+            name: 'Core & stabilité',
+            duration: '3 tours',
+            rest: '1min récup',
+            details: [
+              '30s gainage latéral dynamique (droite)',
+              '30s gainage latéral dynamique (gauche)',
+              '30s hollow hold',
+              '30s pont fessier une jambe (alterner)',
+            ],
+          },
+        ],
+      },
+    ],
+  }
 };
