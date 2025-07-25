@@ -7,7 +7,8 @@
     "build": "next build",
     "db": "docker run -p 6379:6379 -d redis:8.0-rc1",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "jsonschema": "npx ts-json-schema-generator --path 'app/domain/workout.t' --type 'Week' "
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
